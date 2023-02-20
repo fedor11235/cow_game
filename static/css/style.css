@@ -2,16 +2,20 @@
 body {
   font-family: Verdana, Helvetica, Arial, sans-serif;
 }
-.title {
+.leaderboard-title {
+  font-size: 21px;
+  font-weight: 600;
+  padding: 32px 0;
+}
+.cow-title {
   width: 482px;
   font-size: 24px;
   font-weight: 600;
   padding: 32px 0;
 }
 .cow-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  position: absolute;
+  left: calc(50% - 241px);
 }
 .cow-all {
   display: grid;
@@ -25,4 +29,60 @@ body {
   cursor: pointer;
   background-image: url(../img/cow.png);
   background-size: cover;
+}
+
+.cow:hover {
+  box-shadow: 0 0 20px 1px  green;
+}
+
+.users {
+  display: grid;
+  grid-template-columns: repeat(2, 100px);
+  grid-auto-rows: minmax(24px, auto);
+}
+
+.info {
+  position: absolute;
+  top: 40px;
+  right: 8px;
+  width: 200px;
+}
+
+.form-authorization {
+  display: flex;
+  flex-direction: column;
+}
+
+button {
+  width: 100%;
+  margin: 4px 0;
+  cursor: pointer;
+  background-color: #22b14c;
+  color: white;
+  border-radius: 6px;
+  border: none;
+  outline: none;
+}
+
+button:hover {
+  box-shadow: 0 0 10px 1px  green;
+}
+
+input {
+  margin: 4px 0;
+  border: none;
+  outline: none;
+  border-bottom: solid 1px #1a1a1a;
+}
+
+input:focus {
+  border-bottom: solid 1px green;
+}
+
+.description {
+  text-align: center;
+}
+
+.pass-bottom {
+  margin-bottom: 32px;
 }
