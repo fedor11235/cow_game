@@ -5,7 +5,7 @@ body {
 .leaderboard-title {
   font-size: 21px;
   font-weight: 600;
-  padding: 32px 0;
+  padding-bottom: 16px;
 }
 .cow-title {
   width: 482px;
@@ -31,8 +31,21 @@ body {
   background-size: cover;
 }
 
+.cow-disable {
+  pointer-events: none;
+  filter: grayscale(80%);
+}
+
 .cow:hover {
   box-shadow: 0 0 20px 1px  green;
+}
+
+.my-score {
+  display: flex;
+  color: #22b14c;
+  padding: 32px 0;
+  font-size: 21px;
+  font-weight: 600;
 }
 
 .users {
