@@ -1,0 +1,8 @@
+.cow-all {
+  display: grid;
+  grid-template-columns: repeat(2, 100px);
+  grid-auto-rows: minmax(30px, auto);
+}
+.cow {
+  border: outset #1a1a1a;
+}
