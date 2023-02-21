@@ -24,11 +24,17 @@ body {
   grid-auto-rows: minmax(150px, 150px);
 }
 .cow {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
   border: outset #1a1a1a;
   border-radius: 6px;
   cursor: pointer;
   background-image: url(../img/cow.png);
   background-size: cover;
+  font-size: 32px;
+  color: red;
+  font-weight: 600;
 }
 
 .cow-disable {
