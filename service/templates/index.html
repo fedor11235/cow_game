@@ -61,6 +61,12 @@
           <form class="form-authorization" method="POST" action="/login">
             <input type="email" name="email" placeholder="email">
             <input type="password" name="password" placeholder="passmord">
+            <div class="field">
+              <label class="checkbox">
+                  <input type="checkbox">
+                  Remember me
+              </label>
+            </div>
             <button>login</button>
           </form>
         </div>
@@ -69,6 +75,12 @@
           <input type="text" name="name" placeholder="name">
           <input type="email" name="email" placeholder="email">
           <input type="password" name="password" placeholder="passmord">
+          <div class="field">
+            <label class="checkbox">
+                <input type="checkbox">
+                Remember me
+            </label>
+          </div>
           <button>register!</button>
           {% with messages = get_flashed_messages() %}
           {% if messages %}
