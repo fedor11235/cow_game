@@ -1,6 +1,18 @@
 
 body {
   font-family: Verdana, Helvetica, Arial, sans-serif;
+  overflow-x: hidden;
+}
+.game-container {
+  display: flex;
+  justify-content: space-between;
+}
+.leaderboard {
+  width: 20vw;
+}
+.info {
+  width: 20vw;
+  padding-top: 32px;
 }
 .leaderboard-title {
   font-size: 21px;
@@ -8,20 +20,19 @@ body {
   padding-bottom: 16px;
 }
 .cow-title {
-  width: 482px;
   font-size: 24px;
   font-weight: 600;
   padding: 32px 0;
 }
 .cow-container {
-  position: absolute;
-  left: calc(50% - 241px);
+  width: 50vw;
 }
 .cow-all {
   display: grid;
+  height: 50vw;
   gap: 16px;
-  grid-template-columns: repeat(3, 150px);
-  grid-auto-rows: minmax(150px, 150px);
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: minmax(1fr, 1fr);
 }
 .cow {
   display: flex;
@@ -58,13 +69,6 @@ body {
   display: grid;
   grid-template-columns: repeat(2, 100px);
   grid-auto-rows: minmax(24px, auto);
-}
-
-.info {
-  position: absolute;
-  top: 40px;
-  right: 8px;
-  width: 200px;
 }
 
 .form-authorization {
@@ -104,4 +108,25 @@ input:focus {
 
 .pass-bottom {
   margin-bottom: 32px;
+}
+
+@media only screen and (max-width: 550px) {
+  .cow-container {
+    width: 60vw;
+  }
+  .info {
+    width: 30vw;
+  }
+  .cow-all {
+    height: 60vw;
+  }
+  .game-container {
+    height: 60vh;
+  }
+  .leaderboard {
+    position: absolute;
+    bottom: 0;
+    height: 40vh;
+    width: 100%;
+  }
 }
