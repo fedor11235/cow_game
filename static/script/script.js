@@ -1,5 +1,6 @@
 let cowsWait = []
 const timerIncr = 1
+const testTimerEnd = [2023, 03, 12, 15, 11]
 
 document.addEventListener("DOMContentLoaded", handlerDOMContentLoaded)
 
@@ -14,50 +15,37 @@ function handlerDOMContentLoaded() {
   function handlerClickOnCow(event) {
     event.target.classList.add('cow-disable')
     // const cowNumber = event.target.dataset.cowNumber
-    setTimer(event.target)
+    const deadline = Date.parse(new Date()) + 6 * 1000*60*60
+    // const deadline = new Date(...testTimerEnd)
+    initializeClock(event.target, deadline);
     myScore.innerHTML = ++myScore.innerHTML
   }
 }
 
-// TODO исправить таймер
-function setTimer(cowTarget) {
-  const timeBegan = new Date()
-  deadline = new Date(
-    timeBegan.getFullYear(),
-    timeBegan.getMonth(),
-    timeBegan.getDate(),
-
-    timeBegan.getHours(),
-    timeBegan.getMinutes() + timerIncr,
-    timeBegan.getSeconds(),
-    timeBegan.getMilliseconds()
-  );
-  cowsWait.push({cowTarget: cowTarget, time: deadline})
-}
-
-function checkTime() {
-  let timeNow = new Date()
-
-  let tempCowsWait = []
-
-  for(const cow of cowsWait) {
-    if(timeNow >= cow.time) {
-      cow.cowTarget.classList.remove('cow-disable')
-      cow.cowTarget.innerHTML = ''
-    } else {
-      timeLeft = new Date(cow.time - timeNow)
-      console.log(timeLeft)
-      const [y, hour, minutes, seconds] = [
-        timeLeft.getYear(),
-        timeLeft.getHours(),
-        timeLeft.getMinutes(),
-        timeLeft.getSeconds(),
-      ]
-      const timer = `${y}:${hour}:${minutes}:${seconds}`
-      cow.cowTarget.innerHTML = timer
-      tempCowsWait.push(cow)
-    }
+function getTimeRemaining(endtime){
+  let ifEnd = false
+  const t = endtime - Date.parse(new Date())
+  const seconds = Math.floor( (t/1000) % 60 )
+  const minutes = Math.floor( (t/1000/60) % 60 )
+  const hours = Math.floor( (t/(1000*60*60)) % 24 )
+  // var days = Math.floor( t/(1000*60*60*24) );
+  if(hours === 0 && minutes === 0 && seconds === 0) {
+    ifEnd = true
   }
-  cowsWait = tempCowsWait
+  return {
+    ifEnd: ifEnd,  
+    time: `${hours}:${minutes}:${seconds}`,  
+  }
 }
-window.setInterval( checkTime, 100);
+
+function initializeClock(target, endtime){  
+  const timeinterval = setInterval(function() {  
+    const t = getTimeRemaining(endtime)
+    target.innerHTML = t.time
+    if(t.ifEnd){
+      clearInterval(timeinterval)
+      target.classList.remove('cow-disable')
+      target.innerHTML = ''
+    }  
+  },1000);  
+}
