@@ -10,7 +10,8 @@ PORT = os.getenv('PORT')
 
 def main():
   app = create_app()
-  db.create_all(app)
+  with app.app_context():
+    db.create_all()
   app.run(debug=True, host=HOST, port=PORT)
 
 if __name__ == '__main__':
@@ -30,5 +31,4 @@ if __name__ == '__main__':
 #   msg.body = text_body
 #   msg.html = html_body
 #   test = mail.send(msg)
-#   print(test, '2')
 # send_email('Testim', ADMIN, [recipient], 'text body', '<h1>HTML body</h1>')

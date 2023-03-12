@@ -1,12 +1,17 @@
-from flask import Blueprint, render_template
+from flask import Blueprint, render_template, redirect, url_for
 from flask_login import login_required, current_user
 from . import db
 
 main = Blueprint('main', __name__)
 
 @main.route('/', methods=['GET'])
-def set_user_score():
+def index():
   return render_template('index.html')
+  # return redirect(url_for('main.index'))
+
+# @main.route('/cows', methods=['GET'])
+# def cows():
+#   return render_template('index.html')
 
 # secure route example
 @main.route('/profile')

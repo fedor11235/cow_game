@@ -58,14 +58,24 @@
         </div>
         <div class="info-title"></div>
         <div class="info-authorization">
-          <form class="form-authorization" action="">
-            <input type="email" placeholder="email">
-            <input type="password" placeholder="passmord">
+          <form class="form-authorization" method="POST" action="/login">
+            <input type="email" name="email" placeholder="email">
+            <input type="password" name="password" placeholder="passmord">
             <button>login</button>
           </form>
         </div>
         <div class="description">or</div>
-        <button>register!</button>
+        <form class="form-authorization" method="POST" action="/signup">
+          <input type="text" name="name" placeholder="name">
+          <input type="email" name="email" placeholder="email">
+          <input type="password" name="password" placeholder="passmord">
+          <button>register!</button>
+          {% with messages = get_flashed_messages() %}
+          {% if messages %}
+            <div class="is-danger">{{ messages[0] }}</div>
+          {% endif %}
+          {% endwith %}
+        </form>
       </div>
     </div>
   </body>

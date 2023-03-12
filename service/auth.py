@@ -16,11 +16,11 @@ def login():
 
   if not user or not check_password_hash(user.password, password):
     flash('Please check your login details and try again.')
-    return redirect(url_for('main'))
+    return redirect(url_for('main.index'))
   
   login_user(user, remember=remember)
 
-  return redirect(url_for('main'))
+  return redirect(url_for('main.index'))
 
 @auth.route('/signup', methods=['POST'])
 def signup():
@@ -34,7 +34,7 @@ def signup():
   # if a user is found, we want to redirect back to signup page so user can try again
   if user:
     flash('Email address already exists')
-    return redirect(url_for('main'))
+    return redirect(url_for('main.index'))
   
   # create a new user with the form data. Hash the password so the plaintext version isn't saved.
   new_user = User(email=email, password=generate_password_hash(password, method='sha256'), name=name)
@@ -43,10 +43,10 @@ def signup():
   db.session.add(new_user)
   db.session.commit()
 
-  return redirect(url_for('main'))
+  return redirect(url_for('main.index'))
 
 @auth.route('/logout')
 @login_required
 def logout():
   logout_user()
-  return redirect(url_for('main'))
+  return redirect(url_for('main.index'))

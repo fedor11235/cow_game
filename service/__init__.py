@@ -16,8 +16,6 @@ def create_app():
 
   app.config['SECRET_KEY'] = SECRET_KEY
   app.config['SQLALCHEMY_DATABASE_URI'] = SQLALCHEMY_DATABASE_URI
-  
-  print('SQLALCHEMY_DATABASE_URI: ', SQLALCHEMY_DATABASE_URI)
 
   db.init_app(app)
 
