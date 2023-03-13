@@ -74,6 +74,9 @@
             <div class="is-danger">{{ messages[0] }}</div>
           {% endif %}
           {% endwith %}
+          {% if current_user.is_authenticated %}
+            <a href="{{ url_for('auth.logout') }}" class="logout">Logout</a>
+          {% endif %}
         </form>
       </div>
     </div>

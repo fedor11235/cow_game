@@ -20,9 +20,7 @@ def index():
     }
     usersSorted.append(userAdded)
 
-  print('current_user!!!    \033[31m', current_user.is_authenticated, '\033[0m')
   if(current_user.is_authenticated):
-    print('current_user!!!    \033[31m', current_user.name, current_user.score, '\033[0m')
     return render_template('index.html', users=usersSorted, name=current_user.name, score=current_user.score)
   else:
     return render_template('index.html', users=usersSorted)

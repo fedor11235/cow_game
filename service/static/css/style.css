@@ -10,6 +10,7 @@ body {
 }
 .leaderboard {
   width: 20vw;
+  padding-top: 32px;
 }
 .info {
   width: 20vw;
@@ -64,7 +65,7 @@ body {
   display: flex;
   flex-direction: column;
   color: #22b14c;
-  padding: 32px 0;
+  padding-bottom: 32px;
   font-size: 21px;
   font-weight: 600;
 }
@@ -139,6 +140,25 @@ input:focus {
   text-align: center;
   font-size: 21px;
   color: red;
+}
+
+.logout {
+  width: 100%;
+  margin: 4px 0;
+  cursor: pointer;
+  color: white;
+  border-radius: 6px;
+  border: none;
+  outline: none;
+  background-color: red;
+  text-decoration: none;
+  text-align: center;
+  font-size: 13.3333px;
+  height: 18px;
+}
+
+.logout:hover {
+  box-shadow: 0 0 10px 1px  red;
 }
 
 @media only screen and (max-width: 550px) {
