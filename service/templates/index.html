@@ -10,32 +10,19 @@
   <body>
     <div class="game-container">
       <div class="leaderboard">
-        <div class="my-score">
-          <div>My game score: </div>
-          <div id="my-score">0</div>
-        </div>
+        {% if current_user.is_authenticated %}
+          <div class="my-score">
+            <div>{{ name }} game score:</div>
+            <div id="my-score">{{ score }}</div>
+          </div>
+        {% endif %}
         <div class="leaderboard-title">Top 10 players:</div>
         <div class="users">
-          <div class="user">Fedor: </div>
-          <div class="score">45</div>
-          <div class="user">Nina: </div>
           <div class="score">44</div>
-          <div class="user">Lena: </div>
-          <div class="score">20</div>
-          <div class="user">Kira: </div>
-          <div class="score">18</div>
-          <div class="user">Nena: </div>
-          <div class="score">15</div>
-          <div class="user">Alla: </div>
-          <div class="score">14</div>
-          <div class="user">Seta: </div>
-          <div class="score">10</div>
-          <div class="user">Oli: </div>
-          <div class="score">9</div>
-          <div class="user">Chell: </div>
-          <div class="score">5</div>
-          <div class="user">Vov: </div>
-          <div class="score">3</div>
+          {%  for user in users  %}
+            <div class="score">{{ user.score }}</div>
+            <div class="user">{{ user.name }}: </div>
+          {%  endfor  %}
         </div>
       </div>
       <div class="cow-container">

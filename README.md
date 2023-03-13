@@ -32,3 +32,10 @@ save all project dependencies to a file
 ```
 pip freeze > requirements.txt
 ```
+## for development
+comments on the project
+
+For some reason, when describing the model, when I set the index in this way, the index is always written Null
+```
+id = db.Column(db.Integer, primary_key=True)
+```
